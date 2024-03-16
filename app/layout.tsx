@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from 'next/image';
+import mejiLogo from '../public/meji_logo.webp';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="flex min-h-screen flex-col p-24">
+          <div className="flex items-center gap-4 border-b-2 border-black mb-16 pb-4">
+            <Link href={'/'}>
+              <Image
+                src={mejiLogo}
+                width="150"
+                height="150"
+                alt="Meji"
+              />
+            </Link>
+            <span className="font-bold text-4xl">codingskills</span>
+            <span className="font-bold text-4xl text-blue-500">PLAY</span>
+          </div>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
